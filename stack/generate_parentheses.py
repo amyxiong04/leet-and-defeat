@@ -20,3 +20,11 @@ class Solution:
 
         backtrack(0, 0)
         return res
+
+
+# eg: for n = 3
+# ((()))
+# (()())
+# (())()
+# ()(())
+# ()()()
