@@ -4,6 +4,9 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
+
+        # no duplicate triplets allowed
+        
         nums.sort()
         solution = []
         for i, num in enumerate(nums):
