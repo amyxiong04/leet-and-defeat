@@ -12,7 +12,7 @@ class Solution:
             # Track the most frequent character count in the current window  
             maxFreqInWindow = max(maxFreqInWindow, freq[char])
 
-                        # If window is invalid, shrink from the left
+            # If window is invalid, shrink from the left
             windowSize = right - left + 1
             neededReplacements = windowSize - maxFreqInWindow
 
