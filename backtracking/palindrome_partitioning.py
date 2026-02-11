@@ -11,17 +11,16 @@ class Solution:
                 r -= 1
             return True
 
-        def dfs(i) -> None:
-            if i == len(s):
+        def backtrack(start: int) -> None:
+            if start == len(s):
                 res.append(path.copy())
                 return
 
-            for end in range(i, len(s)):
-                if is_palindrome(i, end):
-                    path.append(s[i:end + 1])
-                    dfs(end + 1)
+            for end in range(start, len(s)):
+                if is_palindrome(start, end):
+                    path.append(s[start:end + 1])
+                    backtrack(end + 1)
                     path.pop()
 
-        dfs(0)
+        backtrack(0)
         return res
-
