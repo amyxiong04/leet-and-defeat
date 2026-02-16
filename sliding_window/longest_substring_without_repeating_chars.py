@@ -15,4 +15,4 @@ class Solution:
                 substring.remove(s[left])
                 left += 1
 
-        return maxLength
+        return maxLength0
