@@ -1,28 +1,21 @@
+from typing import List
+
 class Solution:
-    def subsetsWithDup(self, nums):
-        res = set()
-
-        def backtrack(i, subset):
-            if i == len(nums):
-                res.add(tuple(subset))
-                print(res)
-                return
-
-            subset.append(nums[i])
-            backtrack(i + 1, subset)
-            subset.pop()
-            backtrack(i + 1, subset)
-        
-
-
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
         nums.sort()
-        backtrack(0, [])
-        print("ordered:")
-        print(res)
-        return [list(s) for s in res]
-    
+        res = []
+        subset = []
 
-mylist = [4, 1, 3, 2]
+        def dfs(start: int):
+            res.append(subset.copy())
 
-solution = Solution()
-solution.subsetsWithDup(mylist)
+            for i in range(start, len(nums)):
+                if i != 0 and nums[i] == nums[i - 1]:
+                    continue
+
+                subset.append(nums[i])
+                dfs(i + 1)
+                subset.pop()
+
+        dfs(0)
+        return res
