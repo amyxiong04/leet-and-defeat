@@ -20,3 +20,36 @@ class Solution:
                     dp[i] += dp[i + 2]
 
         return dp[0]
+    
+
+    
+# top down with memoization and recursion is more intuitive 
+class Solution:
+    def numDecodings(self, s: str) -> int:
+        memo = {}
+
+        def dfs(i):
+            # Reached the end successfully:
+            # this is 1 valid decoding
+            if i == len(s):
+                return 1
+
+            # Strings starting with '0' are invalid
+            if s[i] == '0':
+                return 0
+
+            # Already solved this subproblem
+            if i in memo:
+                return memo[i]
+
+            # Option 1: take one digit
+            ways = dfs(i + 1)
+
+            # Option 2: take two digits if valid (10 to 26)
+            if i + 1 < len(s) and 10 <= int(s[i:i+2]) <= 26:
+                ways += dfs(i + 2)
+
+            memo[i] = ways
+            return ways
+
+        return dfs(0)
