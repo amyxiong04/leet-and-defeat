@@ -7,6 +7,11 @@ class Solution:
         right_max = 0
         water = 0
 
+        # like container with most water, process left and right sides depending on which one is the limit
+        # left_max stores the tallest wall you have passed from the left
+        # rihgt_max stores tallest wall you passed from the right
+        # when smaller bar appears behind one of those walls, the gap above it holds water 
+
         while left < right:
             if height[left] < height[right]:
                 if height[left] >= left_max:
@@ -22,3 +27,4 @@ class Solution:
                 right -= 1
 
         return water
+
