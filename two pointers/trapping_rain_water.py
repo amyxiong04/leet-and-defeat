@@ -14,10 +14,10 @@ class Solution:
 
         while left < right:
             if height[left] < height[right]:
-                if height[left] >= left_max:
-                    left_max = height[left]
+                if height[left] >= left_max:  # is the current bar a new tallest left wall?
+                    left_max = height[left]   # if yes, update left_max
                 else:
-                    water += left_max - height[left]
+                    water += left_max - height[left] # if no, fill the gap with water
                 left += 1
             else:
                 if height[right] >= right_max:
