@@ -1,14 +1,18 @@
 class Solution:
-    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+    def wordBreak(self, s: str, wordDict: list[str]) -> bool:
+        wordDict = set(wordDict)
         n = len(s)
-        dp = [False] * (n + 1)
-        dp[0] = True
+        dp = [False] * (n + 1)  # dp[i] = whether first i chars can be segmented
 
-        for i in range(1, n + 1):
-            for j in range(i):
+        dp[0] = True # empty prefix is successfully segmented
+
+        if s[0] in wordDict:
+            dp[1] = True
+
+        for i in range(2, n + 1):
+            for j in range(i):  # j is the split point
                 if dp[j] and s[j:i] in wordDict:
                     dp[i] = True
-                    break
 
         return dp[n]
         
